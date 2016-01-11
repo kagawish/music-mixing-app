@@ -1,0 +1,1 @@
+Music mixing app developed for the "Web development" course.
