@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+        <title>Web Audio API: Simple load + play</title>
+        <script src="js/libs/jquery-1.9.0/jquery.min.js"></script>
+        <script src="js/buffer-loader.js"></script>
+        <script src="js/sound.js"></script>
+
+        <style>
+            canvas {
+                border: solid 2Px black;
+                position                    : absolute;
+                top                         : 150px;
+                left                        : 200px;
+            }
+
+            #myCanvas {
+                background:black;
+            }
+            .sample {
+                border: solid white 1px;
+                background:black;
+            }
+        </style>
+		
+		<!-- ================================= [ START ] ================================= -->
+		<!-- CSS DE BENOU -->
+		<style>
+		
+			#buttonFilter {
+				position: absolute;
+				top: 650px;
+				left: 1100px;
+				font-size: 150%;
+			}
+		
+			#txtfilter {
+				position: absolute;
+				top: 570px;
+				left: 1100px;
+				font-size: 150%;
+			}
+			
+			#filterTest {
+				position: absolute;
+				top: 600px;
+				left: 1180px;
+			}
+			
+			#frequencyRangeTest {
+				position: absolute;
+				top: 600px;
+				left: 1480px;
+			}
+			
+			#txtFrequency {
+				position: absolute;
+				top: 570px;
+				left: 1368px;
+				font-size: 150%;
+			}
+			
+			#valFrequency {
+				position: absolute;
+				top: 570px;
+				left: 1680px;
+				font-size: 150%;
+			}
+			
+			#qualityRangeTest {
+				position: absolute;
+				top: 660px;
+				left: 1480px;
+			}
+			
+			#txtQuality {
+				position: absolute;
+				top: 630px;
+				left: 1365px;
+				font-size: 150%;
+			}
+			
+			#valQuality {
+				position: absolute;
+				top: 630px;
+				left: 1680px;
+				font-size: 150%;
+			}
+			
+			#gainRangeTest {
+				position: absolute;
+				top: 720px;
+				left: 1480px;
+				display: none;
+			}
+			
+			#txtGain {
+				position: absolute;
+				top: 690px;
+				left: 1365px;
+				font-size: 150%;
+				display: none;
+			}
+			
+			#valGain {
+				position: absolute;
+				top: 690px;
+				left: 1680px;
+				font-size: 150%;
+				display: none;
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			#spectre {
+                background: white;
+				position: absolute;
+				top: 750px;
+				left: 1180px;
+            }
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			#buttonDistortion{
+			    position: absolute;
+				top: 425px;
+				left: 1100px;
+				font-size: 150%;
+			}
+			
+			#distortionRangeTest {
+				position: absolute;
+				top: 465px;
+				left: 1480px;
+
+			}
+			
+			#valDistortion {
+				position: absolute;
+				top: 435px;
+				left: 1680px;
+				font-size: 150%;
+
+			}
+			
+			#delayDistortion{
+				position: absolute;
+				top: 405px;
+				left: 1480px;
+			}
+			
+			#txtDistortion {
+				position: absolute;
+				top: 375px;
+				left: 1680px;
+				font-size: 150%;
+			}
+			
+			#txtDistortionNum {
+				position: absolute;
+				top: 310px;
+				left: 1680px;
+				font-size: 150%;
+			}
+			
+			#numInstruDistortion{
+				position: absolute;
+				top: 325px;
+				left: 1355px;
+				font-size: 150%;
+			}
+			
+			
+			
+			
+		</style>
+		<!-- ================================= [  END  ] ================================= -->
+    </head>
+    <body onload="init();">
+        <p>Test Multi Tracker Web AUdio</p>
+		<!-- ================================= [ START ] ================================= -->
+			<!-- MODIFS DE BENOU -->
+			<p id="txtfilter">Filter :</p>
+			<button id="buttonFilter" onclick="disableFilter();" disabled>Désactiver le filtre</button>
+			 <select id='filterTest' onchange="changeEffect(document.getElementById('filterTest').value);">
+				<option value="lowpass" selected="selected">Low Pass</option>
+				<option value="highpass">High Pass</option>
+				<option value="bandpass">Band Pass</option>
+				<option value="lowshelf">Low Shelf</option>
+				<option value="highshelf">High Shelf</option>
+				<option value="peaking">Peaking</option>
+				<option value="notch">Notch</option>
+				<option value="allpass">All Pass</option>
+			</select> 
+			
+			<p id="txtFrequency">Frequency :</p>
+			<input type="range" id ="frequencyRangeTest" min="0" max="3000" value="1000" oninput="changeFrequency(document.getElementById('frequencyRangeTest').value);">
+			<p id="valFrequency"> 1000 / 3000 </p>
+			
+			
+			
+			<p id="txtQuality">Quality :</p>
+			<input type="range" id ="qualityRangeTest" min="0" max="100" value="0" oninput="changeQuality(document.getElementById('qualityRangeTest').value);">
+			<p id="valQuality"> 0 / 100 </p>
+			
+			
+			<p id="txtGain">Gain :</p>
+			<input type="range" id ="gainRangeTest" min="0" max="100" value="4" oninput="changeGain(document.getElementById('gainRangeTest').value);">
+			<p id="valGain"> 4 / 100 </p>
+			
+			
+			<button id="buttonDistortion" onclick="makeDistortion(document.getElementById('distortionRangeTest').value,document.getElementById('delayDistortion').value,document.getElementById('numInstruDistortion').value);" disabled>Faire une distorsion</button>
+			<input type="range" id ="distortionRangeTest" min="0" max="2000" value="0" oninput="changeDistortion(document.getElementById('distortionRangeTest').value);">
+			<p id="valDistortion"> 0 / 2000 (Sur context.destination)</p>
+			<p id="txtDistortion"> Délai(en millisecondes)</p>
+			<input type="text" id="delayDistortion">
+			<p id="txtDistortionNum"> Numéro de l'instrument</p>
+			<input type="text" id="numInstruDistortion">
+			
+			
+			<!-- ================================= [  END  ] ================================= -->
+        <button id="bplay" onclick="playAllTracks(0);" disabled>Start</button>
+        <button id="bpause" onclick="pauseAllTracks();" disabled>Pause</button>
+        <button id="bstop" onclick="stopAllTracks();" disabled>Stop</button>
+        Master Volume : <input type="range" id ="masterVolume" min="0" max="100" value="100" oninput="changeMasterVolume(this);">
+        <br/>
+        <canvas id="myCanvas" width="800" height="400"></canvas>
+		<!-- ================================= CANVAS POUR LE SPECTRE ================================= -->
+		<canvas id="spectre" width="800" height="150"></canvas>
+
+        <div id="songs"></div><p>
+
+            <button onclick="loadSong('amy_rehab')">Load tracklist for Rehab</button>
+
+        <div id="tracks">
+        </div>
+		
+		<script>startTimer();</script>
+    </body>
+</html>
