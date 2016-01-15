@@ -1,0 +1,81 @@
+{
+"listSongs": [
+	{
+	  "id": 0,
+	  "format": "mp3",
+	  "titre": "barrets theme",
+	  "duree": "03.25",
+	  "genre": "Musique de jeux",
+	  "dateAjout" : "14/01/2016",
+	  "titreOriginal" : "barrets theme",
+	  "auteurOriginal" : "FFVII",
+	  "auteur" : "benou"
+	},
+	{
+	  "id": 1,
+	  "format": "mp3",
+	  "titre": "gold saucer",
+	  "duree": "02.28",
+	  "genre": "Musique de jeux",
+	  "dateAjout" : "14/01/2016",
+	  "titreOriginal" : "gold saucer",
+	  "auteurOriginal" : "FFVII",
+	  "auteur" : "benou"
+	},
+	{
+	  "id": 2,
+	  "format": "mp3",
+	  "titre": "hurry",
+	  "duree": "02.28",
+	  "genre": "Musique de jeux",
+	  "dateAjout" : "14/01/2016",
+	  "titreOriginal" : "hurry",
+	  "auteurOriginal" : "FFVII",
+	  "auteur" : "benou"
+	},
+	{
+	  "id": 3,
+	  "format": "mp3",
+	  "titre": "shinra-company",
+	  "duree": "04.01",
+	  "genre": "Musique de jeux",
+	  "dateAjout" : "14/01/2016",
+	  "titreOriginal" : "shinra-company",
+	  "auteurOriginal" : "FFVII",
+	  "auteur" : "benou"
+	},
+	{
+	  "id": 4,
+	  "format": "mp3",
+	  "titre": "tiffa theme",
+	  "duree": "04.22",
+	  "genre": "Musique de jeux",
+	  "dateAjout" : "14/01/2016",
+	  "titreOriginal" : "tiffa theme",
+	  "auteurOriginal" : "FFVII",
+	  "auteur" : "benou"
+	},
+	{
+	  "id": 5,
+	  "format": "",
+	  "titre": "",
+	  "duree": "",
+	  "genre": "",
+	  "dateAjout" : "",
+	  "titreOriginal" : "",
+	  "auteurOriginal" : "",
+	  "auteur" : "user2"
+	},
+	{
+	  "id": 6,
+	  "format": "",
+	  "titre": "",
+	  "duree": "",
+	  "genre": "",
+	  "dateAjout" : "",
+	  "titreOriginal" : "",
+	  "auteurOriginal" : "",
+	  "auteur" : "user3"
+	}
+]
+}

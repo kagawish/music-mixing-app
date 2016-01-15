@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+		
+		<!-- On applique un CSS -->
+		<link rel="stylesheet" href="./css/sharedCSS.css" type="text/css" />	
+		
+        <title>Test share Song</title>
+        <script src="js/jquery-1.9.0/jquery.min.js"></script>
+        <script src="js/lireFichierJSON.js"></script>
+		<script src="js/sound.js"></script>
+		<script src="js/waveformDrawer.js"></script>
+		
+		<script>
+			//INITIALISATION
+			pause = false;
+			currentTime = 0;
+			chemin = "";
+			
+			authorSongs = [];
+		</script>
+
+    </head>
+    <body>
+		<div>
+			<h4>Test share Song</h4>
+			
+			<button onclick="document.getElementById('audioCtx').play();source.start(0,0);startAudio(1);">Play Music</button>
+			<button onclick="document.getElementById('audioCtx').pause();startAudio(2);">Pause Music</button>
+			<button onclick="document.getElementById('audioCtx').pause();document.getElementById('audioCtx').currentTime = 0;startAudio(2);">Stop Music</button>
+			
+			<!-- DIV pour jouer la musique -->
+			<div id="playSong">			
+				<!-- SCRIPT pour charger la musique -->
+				<script>
+				
+					setTimeout(function(){
+						path = "./Songs/";
+						chemin = path + auteur +"/"+ titre +"."+ format;					
+						//alert(chemin);
+						document.getElementById('playSong').innerHTML = "<audio id='audioCtx' controls><source id='audioCtxSrc' src='"+chemin+"' type='audio/mpeg'>Your browser does not support the audio element.</audio>";
+						//On charge la musique et on cree le context et on build le graphe
+						init();
+					}, 1000);
+					
+				</script>
+								
+			</div>
+			
+			<!-- DIV pour charger les informations de la musique -->
+			<div id="infosSong">
+			
+			</div>
+			
+			
+			<!-- DIV pour charger les autres musiques de l'utilisateur -->
+			<div id="otherSongOfUser">
+			
+			</div>
+			
+			<!-- ================================= [ START ] ================================= -->
+			<!-- MODIFS DE BENOU -->
+			<div id="filterDiv">
+				<p id="txtfilter">Filter :</p>
+				<button id="buttonFilter" onclick="disableFilter();" disabled>Désactiver le filtre</button>
+				 <select id='filterTest' onchange="changeEffect(document.getElementById('filterTest').value);">
+					<option value="lowpass" selected="selected">Low Pass</option>
+					<option value="highpass">High Pass</option>
+					<option value="bandpass">Band Pass</option>
+					<option value="lowshelf">Low Shelf</option>
+					<option value="highshelf">High Shelf</option>
+					<option value="peaking">Peaking</option>
+					<option value="notch">Notch</option>
+					<option value="allpass">All Pass</option>
+				</select> 
+				
+				<p id="txtFrequency">Frequency :</p>
+				<input type="range" id ="frequencyRangeTest" min="0" max="3000" value="1000" oninput="changeFrequency(document.getElementById('frequencyRangeTest').value);">
+				<p id="valFrequency"> 1000 / 3000 </p>
+				
+				
+				
+				<p id="txtQuality">Quality :</p>
+				<input type="range" id ="qualityRangeTest" min="0" max="100" value="0" oninput="changeQuality(document.getElementById('qualityRangeTest').value);">
+				<p id="valQuality"> 0 / 100 </p>
+				
+				
+				<p id="txtGain">Gain :</p>
+				<input type="range" id ="gainRangeTest" min="0" max="100" value="4" oninput="changeGain(document.getElementById('gainRangeTest').value);">
+				<p id="valGain"> 4 / 100 </p>
+			</div>
+			<!-- ================================= [  END  ] ================================= -->
+
+			
+			
+			
+			
+			
+			
+			
+			<!-- ================================= CANVAS POUR LE SPECTRE ================================= -->
+			<canvas id="spectre" width="800" height="150"></canvas>
+			<!-- =================================    [  END CANVAS  ]    ================================= -->
+			<canvas id="spectreLong"></canvas>
+
+        </div>
+
+    </body>
+</html>

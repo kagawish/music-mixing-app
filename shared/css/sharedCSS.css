@@ -1,0 +1,140 @@
+#buttonFilter {
+	position: relative;
+	top: -60px;
+	left: 250px;
+	font-size: 150%;
+}
+
+#txtfilter {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	font-size: 150%;
+}
+
+#filterTest {
+	position: relative;
+	top: -65px;
+	left: -130px;
+}
+
+#frequencyRangeTest {
+	position: relative;
+	top: -100px;
+	left: 150px;
+}
+
+#txtFrequency {
+	position: relative;
+	top: -55px;
+	left: 20px;
+	font-size: 150%;
+}
+
+#valFrequency {
+	position: relative;
+	top: -155px;
+	left: 350px;
+	font-size: 150%;
+}
+
+#qualityRangeTest {
+	position: relative;
+	top: -195px;
+	left: 150px;
+}
+
+#txtQuality {
+	position: relative;
+	top: -150px;
+	left: 20px;
+	font-size: 150%;
+}
+
+#valQuality {
+	position: relative;
+	top: -250px;
+	left: 350px;
+	font-size: 150%;
+}
+
+#gainRangeTest {
+	position: relative;
+	top: -285px;
+	left: 150px;
+	display: none;
+}
+
+#txtGain {
+	position: relative;
+	top: -240px;
+	left: 20px;
+	font-size: 150%;
+	display: none;
+}
+
+#valGain {
+	position: relative;
+	top: -335px;
+	left: 350px;
+	font-size: 150%;
+	display: none;
+}		
+
+			
+#spectre {
+    background: grey;
+	position: absolute;
+	top: 10px;
+	left: 500px;
+}
+
+#spectreLong {
+	background: #000 none repeat scroll 0% 0%;
+	position: absolute;
+	top: 118px;
+	left: 8px;
+	height: 70px;
+	width: 300px;
+}
+
+
+
+
+
+
+
+
+
+
+#infosSong{
+	left: 600px;
+	position: relative;
+	top: 100px;
+	background-color: cyan;
+	width: 15%;
+}
+
+#otherSongOfUser{
+	position: relative;
+	left: 1000px;
+	top: -230px;
+	background-color: #FFD700;
+	width: 15%;
+}
+
+#filterDiv{
+	width: 500px;
+	height: 300px;
+	position: relative;
+	top: -325px;
+}
+
+
+
+
+
+#audioCtx{
+	height: 20px;
+	width: 300px;
+}

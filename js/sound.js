@@ -48,6 +48,11 @@ window.requestAnimFrame = (function() {
 
 
 function init() {
+
+	// Object that draws a sample waveform in a canvas  
+	waveformDrawer = new WaveformDrawer(); 
+
+
     // Get handles on buttons
     buttonPlay = document.querySelector("#bplay");
     buttonPause = document.querySelector("#bpause");
@@ -144,7 +149,9 @@ function loadAllSoundSamples(tracks) {
             finishedLoading
             );
     bufferLoader.load();
+	
 }
+
 function finishedLoading(bufferList) {
     console.log("finished loading");
     
@@ -265,6 +272,8 @@ resetAllBeforeLoadingANewSong();
         // resize canvas depending on number of samples
         resizeSampleCanvas(track.instruments.length);
         var i = 0;
+		
+		nbInstrumentsMusique = 0;
 
         track.instruments.forEach(function(instrument, trackNumber) {
             // Image
@@ -289,9 +298,10 @@ resetAllBeforeLoadingANewSong();
             tracks.push(url);
             console.log("Ajout piste audio " + instrument.name);
             
-
+			nbInstrumentsMusique = nbInstrumentsMusique + 1;
         });
         loadAllSoundSamples(tracks);
+		//alert("Nombre d'instruments de la musique courante: "+nbInstrumentsMusique);
     };
     xhr.send();
 }
@@ -394,6 +404,7 @@ function loadSong(song) {
 }
 
 function playAllTracks(startTime) {
+
     buildGraph(buffers);
 
     playFrom(startTime);
